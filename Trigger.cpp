@@ -1,3 +1,12 @@
+#include <Windows.h>
+#include <iostream>
+#include <TlHelp32.h>
+#include <handleapi.h>
+#include <processthreadsapi.h>
+#include <chrono>
+#include <thread>
+#include <string>
+
 constexpr int LIFE_ALIVE = 0;
 
 namespace G
