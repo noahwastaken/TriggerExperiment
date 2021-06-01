@@ -118,16 +118,6 @@ bool GetProcess(const wchar_t* szName)
 
 					std::this_thread::sleep_for(std::chrono::milliseconds(1));
 				}
-			}
-			else
-			{
-				wprintf(L"Not able to access insert.dll!\n");
-			}
-		}
-		else
-		{
-			wprintf(L"Did not find insert.exe!\n");
-		}
 
 		if (G::Proc::m_hProc)
 			CloseHandle(G::Proc::m_hProc);
