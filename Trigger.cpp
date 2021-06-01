@@ -1,5 +1,3 @@
-#include <Trigger.h>
-
 constexpr int LIFE_ALIVE = 0;
 
 namespace G
