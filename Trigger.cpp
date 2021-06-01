@@ -1,3 +1,34 @@
+constexpr int LIFE_ALIVE = 0;
+
+namespace G
+{
+	namespace Proc
+	{
+		DWORD m_dwPID = 0x0;
+		HANDLE m_hProc = 0;
+	}
+
+	namespace Off
+	{
+		constexpr std::ptrdiff_t m_lifeState = 0x25F;
+		constexpr std::ptrdiff_t m_iCrosshairId = 0xB3E4;
+		constexpr std::ptrdiff_t m_iTeamNum = 0xF4;
+		constexpr std::ptrdiff_t dwLocalPlayer = 0xD3DD14;
+		constexpr std::ptrdiff_t dwEntityList = 0x4D5239C;
+	}
+
+	namespace Mem
+	{
+		template<class T>
+		T Read(DWORD dwAddr)
+		{
+			T cData;
+			ReadProcessMemory(G::Proc::m_hProc, reinterpret_cast<LPCVOID>(dwAddr), &cData, sizeof(T), 0);
+			return cData;
+		}
+	}
+}
+
 bool GetProcess(const wchar_t* szName)
 {
 	if (auto hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0))
